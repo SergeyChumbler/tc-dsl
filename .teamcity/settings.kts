@@ -50,18 +50,18 @@ object Build : BuildType({
             param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
         }
         script {
-            name = "Install npm deps"
-            scriptContent = "ls && cd Kaspersky.Web && npm cache clean --force && npm i"
+            name = "Show current dir"
+            scriptContent = "ls -a"
         }
         dotnetBuild {
             name = "dotnet Build"
-            projects = "Kaspersky.sln"
+            projects = "./Kaspersky.Web/Kaspersky.Web.csproj"
             param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
         }
         script {
             name = "Command line"
             executionMode = BuildStep.ExecutionMode.RUN_ON_FAILURE
-            scriptContent = "echo BUILD STEP 3"
+            scriptContent = "echo BUILD STEP 4"
         }
     }
 
